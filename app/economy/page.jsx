@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Yazarlar() {
+function Economy() {
     return (
         <div>
-            Yazarlar
+            Economy
         </div>
     )
 }
 
-export default Yazarlar
+export default Economy;

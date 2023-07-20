@@ -1,10 +1,24 @@
 "use client";
 import React, { useState } from 'react';
-import { createStyles, Header, Group, ActionIcon, Container, Burger, rem, useMantineColorScheme, Switch, useMantineTheme } from '@mantine/core';
+import { createStyles, Header, Group, ActionIcon, Container, Burger, rem, useMantineColorScheme, Switch, useMantineTheme, Transition, Paper } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram, IconSun, IconMoonStars } from '@tabler/icons-react';
+import { links } from '@utils/mock';
+import Link from 'next/link';
 
 const useStyles = createStyles((theme) => ({
+    header: {
+        transition: 'all',
+        transitionDuration: '3s',
+        transitionProperty: 'all',
+        transform: `translateY(100px)`,
+        zIndex: 2,
+        position: 'relative',
+    },
+    stickyHeader: {
+        position: 'sticky',
+          
+    },
     inner: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -62,24 +76,15 @@ const useStyles = createStyles((theme) => ({
             color: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).color,
         },
     },
+
+    dropdown: {
+        zIndex: 9,
+        position: 'relative',
+    }
 }));
 
-const links = [
-    {
-        link: 'http://google.com',
-        label: 'Google',
-    },
-    {
-        link: 'http://google2.com',
-        label: 'Google2',
-    },
-    {
-        link: 'http://google3.com',
-        label: 'Google3',
-    },
-];
 
-function Navbar() {
+export default function Navbar() {
     const [opened, { toggle }] = useDisclosure(false);
     const [active, setActive] = useState(links[0].link);
     const { classes, cx } = useStyles();
@@ -87,20 +92,21 @@ function Navbar() {
     const theme = useMantineTheme();
 
     const items = links.map((link) => (
-        <a
-            key={link.label}
-            href={link.link}
-            className={cx(classes.link, { [classes.linkActive]: active === link.link })}
-            onClick={(event) => {
-                event.preventDefault();
-                setActive(link.link);
-            }}
+        <Link key={link.label}
+        href={link.link}
+        className={cx(classes.link, { [classes.linkActive]: active === link.link })}
+        onClick={() => {
+            setActive(link.link);
+        }}
         >
-            {link.label}
-        </a>
+{link.label}
+        </Link>
+        
+
     ));
     return (
-        <Header height={56} mb={120}>
+        <Header height={56} className={true ? classes.stickyHeader :  classes.header}>
+           
             <Container className={classes.inner}>
                 <Burger opened={opened} onClick={toggle} size="sm" className={classes.burger} />
                 <Group className={classes.links} spacing={5}>
@@ -110,7 +116,7 @@ function Navbar() {
                 Logo
 
                 <Group spacing={0} className={classes.social} position="right" noWrap>
-                    {/* <ActionIcon size="lg">
+                     <ActionIcon size="lg">
                         <IconBrandTwitter size="1.1rem" stroke={1.5} />
                     </ActionIcon>
                     <ActionIcon size="lg">
@@ -118,7 +124,7 @@ function Navbar() {
                     </ActionIcon>
                     <ActionIcon size="lg">
                         <IconBrandInstagram size="1.1rem" stroke={1.5} />
-                    </ActionIcon> */}
+                    </ActionIcon>
                     <Switch
                         checked={colorScheme === 'dark'}
                         onChange={() => toggleColorScheme()}
@@ -128,8 +134,13 @@ function Navbar() {
                     />
                 </Group>
             </Container>
+            <Transition transition="pop-top-right" duration={200} mounted={opened}>
+          {(styles) => (
+            <Paper className={classes.dropdown} withBorder style={styles}>
+              {items}
+            </Paper>
+          )}
+        </Transition>
         </Header>
     )
 }
-
-export default Navbar
