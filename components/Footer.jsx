@@ -7,9 +7,6 @@ import { footerData } from '@utils/mock';
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    //WebkitBoxSizing: 'border-box',
-    //MozBoxSizing: 'border-box',
-    //boxSizing: 'border-box',
     marginTop: rem(120),
     paddingTop: `calc(${theme.spacing.xl} * 2)`,
     paddingBottom: `calc(${theme.spacing.xl} * 2)`,
@@ -149,7 +146,7 @@ export function Footer() {
       </Container>
       <Container className={classes.afterFooter}>
         <Text color="dimmed" size="sm">
-          © 2020 mantine.dev. All rights reserved.
+          © 2023 daktilo.com. Tüm Haklarımız Saklıdır.
         </Text>
 
         <Group spacing={0} className={classes.social} position="right" noWrap>

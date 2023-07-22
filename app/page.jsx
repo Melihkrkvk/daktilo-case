@@ -29,7 +29,7 @@ const Home = () => {
                     </Grid.Col>
                 ))}
             </Grid>
-            <DaktiloSlider style={{ marginTop: '5px' }} slidesToScroll={slidesToScroll} slideGap={10}  />
+            <DaktiloSlider style={{ marginTop: '15px' }} slidesToScroll={slidesToScroll} slideGap={10}  />
             <DaktiloGrid />
         </Container> 
     );

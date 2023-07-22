@@ -41,6 +41,32 @@ export default function DaktiloGrid() {
             category={gridData[2].category}
           />
         </Stack> 
+        <Stack>
+          <DaktiloCard
+            title={gridData[3].title}
+            image={gridData[3].image}
+            imageAlt={gridData[3].imageAlt}
+            ads={gridData[3].ads}
+          category={gridData[3].category}
+          />
+          <DaktiloCard
+            title={gridData[4].title}
+            image={gridData[4].image}
+            imageAlt={gridData[4].imageAlt}
+            ads={gridData[4].ads}
+            category={gridData[4].category}
+          />
+        </Stack>
+        <DaktiloCard
+          title={gridData[5].title}
+          image={gridData[5].image}
+          imageAlt={gridData[5].imageAlt}
+          ads={gridData[5].ads}
+          category={gridData[5].category}
+          desc={gridData[5].desc}
+          showDesc
+          imagePosition={'top'}
+        />
       </SimpleGrid>
     
     </Container>
