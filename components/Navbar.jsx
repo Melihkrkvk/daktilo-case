@@ -1,24 +1,19 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createStyles, Header, Group, ActionIcon, Container, Burger, rem, useMantineColorScheme, Switch, useMantineTheme, Transition, Paper } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram, IconSun, IconMoonStars } from '@tabler/icons-react';
 import { links } from '@utils/mock';
 import Link from 'next/link';
+import DaktiloSearch from '@components/DaktiloSearch';
 
 const useStyles = createStyles((theme) => ({
     header: {
-        transition: 'all',
-        transitionDuration: '3s',
-        transitionProperty: 'all',
-        transform: `translateY(100px)`,
         zIndex: 2,
-        position: 'relative',
+        position: 'fixed',
+        top: 0,
     },
-    stickyHeader: {
-        position: 'sticky',
-          
-    },
+  
     inner: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -44,6 +39,16 @@ const useStyles = createStyles((theme) => ({
         [theme.fn.smallerThan('sm')]: {
             width: 'auto',
             marginLeft: 'auto',
+        },
+    },
+    search: {
+        [theme.fn.smallerThan('md')]: {
+            display: 'none',
+        },
+    },
+    searchButton: {
+        [theme.fn.largerThan('md')]: {
+            display: 'none',
         },
     },
 
@@ -99,14 +104,11 @@ export default function Navbar() {
             setActive(link.link);
         }}
         >
-{link.label}
+            {link.label}
         </Link>
-        
-
     ));
     return (
-        <Header height={56} className={true ? classes.stickyHeader :  classes.header}>
-           
+        <Header height={56} className={classes.header}>
             <Container className={classes.inner}>
                 <Burger opened={opened} onClick={toggle} size="sm" className={classes.burger} />
                 <Group className={classes.links} spacing={5}>
@@ -115,14 +117,20 @@ export default function Navbar() {
 
                 Logo
 
-                <Group spacing={0} className={classes.social} position="right" noWrap>
+                <Group spacing={5} className={classes.social} position="right" noWrap>
+                <div className={classes.search}>
+                <DaktiloSearch/>    
+                </div>
+               {/* <div className={classes.searchButton}>
+                <DaktiloSearch isButton/>
+                </div>*/}
                      <ActionIcon size="lg">
                         <IconBrandTwitter size="1.1rem" stroke={1.5} />
                     </ActionIcon>
                     <ActionIcon size="lg">
                         <IconBrandYoutube size="1.1rem" stroke={1.5} />
                     </ActionIcon>
-                    <ActionIcon size="lg">
+                    <ActionIcon sx={{marginRight: 10}} size="lg">
                         <IconBrandInstagram size="1.1rem" stroke={1.5} />
                     </ActionIcon>
                     <Switch

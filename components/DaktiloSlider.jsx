@@ -2,13 +2,13 @@ import React from 'react'
 import { Carousel } from '@mantine/carousel';
 import { rem } from '@mantine/core';
 import { sliderData } from '@utils/mock';
-import DaktiloCard from './DaktiloCard';
+import DaktiloSliderCard from './DaktiloSliderCard';
 
 
   export default function DaktiloSlider({ style, slidesToScroll, slideGap }) {    
     const slides = sliderData.map((item) => (
       <Carousel.Slide key={item.title}>
-        <DaktiloCard buttonTitle='Haberi Oku' {...item} />
+        <DaktiloSliderCard buttonTitle='Haberi Oku' {...item} />
       </Carousel.Slide>
     ));
   return (

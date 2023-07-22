@@ -1,69 +1,89 @@
 import React from 'react'
-import { createStyles, Paper, Text, Title, Button, rem } from '@mantine/core';
+import Link from 'next/link';
+import { Card, Image, Text, Badge, createStyles} from '@mantine/core';
 
-const cardTypeLookup = (cardType) => {
-  const obj = {
-    standart: 200,
-    default: 400,
-  };
-  return obj[cardType] || obj['default'];
-};
-
-const useStyles = createStyles((theme, {cardType}) => ({
-    card: {
-      height: `${rem(cardTypeLookup(cardType))}`,
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      alignItems: 'flex-start',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    },
-  
-    title: {
-      fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-      fontWeight: 900,
-      color: theme.white,
-      //color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[0],
-      lineHeight: 1.2,
-      fontSize: rem(32),
-      marginTop: theme.spacing.xs,
-    },
-  
-    category: {
-      color: theme.white,
-      opacity: 0.7,
-      fontWeight: 700,
-      textTransform: 'uppercase',
-    },
-
-  }));
+const useStyles = createStyles((theme) => ({
+  topicBadge: {
+    bottom: 10,
+    left: 10,
+  },
+  adsBadge: {
+    top: 10,
+    right: 10,
+  },
+}));
 
 
- 
+function DaktiloCard({title, desc, image, imageAlt, showDesc = false, ads, category, style, imagePosition}) {
+  const {classes} = useStyles();
 
-  export default function DaktiloCard({image, title, category, buttonTitle, cardType}) {
-    const { classes } = useStyles({ cardType });
-  
+  if (imagePosition === 'bottom') {
     return (
-      <Paper
-        shadow="md"
-        p="xl"
-        radius="md"
-        sx={{ backgroundImage: `url(${image})` }}
-        className={classes.card}
-      >
-        <div>
-          <Text className={classes.category} size="xs">
-            {category}
-          </Text>
-          <Title order={3} className={classes.title}>
-            {title}
-          </Title>
-        </div>
-        <Button variant="white" color="dark">
-          {buttonTitle}
-        </Button>
-      </Paper>
+      <Card
+      shadow="sm"
+      padding="xl"
+      component={Link}
+      href="#"
+      style={style}
+      className={classes.card}
+      id='card'
+    >
+     
+
+      <Text weight={500} size="lg" mt="md">
+        {title}
+      </Text>
+      {showDesc && (
+        <Text mt="xs" color="dimmed" size="sm">
+          {desc}
+        </Text>
+      )}
+
+<Card.Section style={{position: 'relative' }}>
+        <Image
+          src={image}
+          height={160}
+          alt={imageAlt}
+        />
+        {(ads || category) &&
+          <Badge pos='absolute' display='flex' variant='filled' className={ads ? classes.adsBadge : classes.topicBadge}>{ads ? ads : category}</Badge>
+          }
+      </Card.Section>
+    </Card>
     );
-}
+  }
+  return (
+    <Card
+        shadow="sm"
+        padding="xl"
+        component={Link}
+        href="#"
+        style={style}
+        className={classes.card}
+        id='card'
+      >
+        <Card.Section style={{position: 'relative' }}>
+          <Image
+            src={image}
+            height={160}
+            alt={imageAlt}
+          />
+          {(ads || category) &&
+            <Badge pos='absolute' display='flex' variant='filled' className={ads ? classes.adsBadge : classes.topicBadge}>{ads ? ads : category}</Badge>
+            }
+        </Card.Section>
+  
+        <Text weight={500} size="lg" mt="md">
+          {title}
+        </Text>
+        {showDesc && (
+          <Text mt="xs" color="dimmed" size="sm">
+            {desc}
+          </Text>
+        )}
+      </Card>
+    
+  );
+ 
+};
+export default DaktiloCard;
