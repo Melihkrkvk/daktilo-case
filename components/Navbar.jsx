@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import { createStyles, Header, Group, ActionIcon, Container, Burger, rem, useMantineColorScheme, Switch, useMantineTheme, Transition, Paper } from '@mantine/core';
+import React, { useState } from 'react';
+import { Text,createStyles, Header, Group, ActionIcon, Container, Burger, rem, useMantineColorScheme, Switch, useMantineTheme, Transition, Paper } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram, IconSun, IconMoonStars } from '@tabler/icons-react';
 import { links } from '@utils/mock';
@@ -12,9 +12,23 @@ const useStyles = createStyles((theme) => ({
         zIndex: 2,
         position: 'fixed',
         top: 0,
+        maxHeight: 60,
+    },
+    logo: {
+        color: theme.colorScheme === 'dark' ? theme.white : theme.colors.dark[7],
     },
   
     inner: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        height: rem(56),
+
+        [theme.fn.smallerThan('sm')]: {
+            justifyContent: 'flex-start',
+        },
+    },
+    nav2_inner: {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -46,12 +60,6 @@ const useStyles = createStyles((theme) => ({
             display: 'none',
         },
     },
-    searchButton: {
-        [theme.fn.largerThan('md')]: {
-            display: 'none',
-        },
-    },
-
     burger: {
         marginRight: theme.spacing.md,
 
@@ -89,7 +97,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 
-export default function Navbar() {
+export default function Navbar({navType = 'nav1'}) {
     const [opened, { toggle }] = useDisclosure(false);
     const [active, setActive] = useState(links[0].link);
     const { classes, cx } = useStyles();
@@ -107,23 +115,69 @@ export default function Navbar() {
             {link.label}
         </Link>
     ));
+    if (navType === 'nav1') {
+    
+        return (
+            <Header height={'auto'} className={classes.header}>
+                <Container className={classes.inner}>
+                    <Burger opened={opened} onClick={toggle} size="sm" className={classes.burger} />
+                    <Group display='flex' className={classes.links} spacing={5}>
+                        {items}
+                    </Group>
+    
+                    <Text className={classes.logo}>Logo</Text>
+    
+                    <Group spacing={5} className={classes.social} position="right" noWrap>
+                    <div className={classes.search}>
+                    <DaktiloSearch/>  
+                    </div>
+                 
+                         <ActionIcon size="lg">
+                            <IconBrandTwitter size="1.1rem" stroke={1.5} />
+                        </ActionIcon>
+                        <ActionIcon size="lg">
+                            <IconBrandYoutube size="1.1rem" stroke={1.5} />
+                        </ActionIcon>
+                        <ActionIcon sx={{marginRight: 10}} size="lg">
+                            <IconBrandInstagram size="1.1rem" stroke={1.5} />
+                        </ActionIcon>
+                        <Switch
+                            checked={colorScheme === 'dark'}
+                            onChange={() => toggleColorScheme()}
+                            size="lg"
+                            onLabel={<IconSun color={theme.white} size="1.25rem" stroke={1.5} />}
+                            offLabel={<IconMoonStars color={theme.colors.gray[6]} size="1.25rem" stroke={1.5} />}
+                        />
+                    </Group>
+                </Container>
+                <Transition transition="pop-top-right" duration={200} mounted={opened}>
+              {(styles) => (
+                <Paper className={classes.dropdown} withBorder style={styles}>
+                  {items}
+                </Paper>
+              )}
+            </Transition>
+            </Header>
+        )
+    }
+
     return (
-        <Header height={56} className={classes.header}>
-            <Container className={classes.inner}>
+        <Header height={90} className={classes.header}>
+            <Container className={classes.nav2_inner}>
+                <Text className={classes.logo}>Logo</Text>
+                <Container>
+
                 <Burger opened={opened} onClick={toggle} size="sm" className={classes.burger} />
-                <Group className={classes.links} spacing={5}>
+                <Group align='center' className={classes.links} spacing={5}>
                     {items}
                 </Group>
+                </Container>
 
-                Logo
 
                 <Group spacing={5} className={classes.social} position="right" noWrap>
-                <div className={classes.search}>
+                <div>
                 <DaktiloSearch/>    
                 </div>
-               {/* <div className={classes.searchButton}>
-                <DaktiloSearch isButton/>
-                </div>*/}
                      <ActionIcon size="lg">
                         <IconBrandTwitter size="1.1rem" stroke={1.5} />
                     </ActionIcon>

@@ -9,6 +9,14 @@ export const links = [
       link: '/authors',
       label: 'Yazarlar',
   },
+  {
+      link: '/demo',
+      label: 'Grid',
+  },
+  {
+      link: '/GridSkel',
+      label: 'Grid Skel',
+  },
 ];
 
 export const footerData = [
@@ -68,11 +76,11 @@ export const footerData = [
 
 export const cardData = [
   {
-    title:'İstanbul Su Ve Kanalizasyon İdare...',
+    title:'Bugun hava çok soğuk',
     image:"https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2549&q=80",
     imageAlt:"No way!",
     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo ullamcorper a lacus vestibulum. Ac feugiat sed lectus vestibulum mattis ullamcorper velit. Dui id ornare arcu odio. Proin sagittis nisl rhoncus mattis. Ultricies mi quis hendrerit dolor magna eget est lorem. Fringilla est ullamcorper eget nulla facilisi etiam. In hendrerit gravida rutrum quisque non tellus orci ac auctor. Eget lorem dolor sed viverra ipsum nunc aliquet bibendum. Porttitor massa id neque aliquam vestibulum morbi. Ullamcorper eget nulla facilisi etiam dignissim diam quis. Ornare arcu odio ut sem nulla.',
-    ads: 'RESMİ İLANDIR',
+    ads: 'RESMİ İLANDIR'
   },
   {
     title:'İstanbul Su Ve Kanalizasyon İdare',
@@ -89,6 +97,8 @@ export const cardData = [
     image:"https://media.istockphoto.com/id/1499055290/tr/foto%C4%9Fraf/1-4-gold-stands-on-the-jewelers-table.jpg?s=612x612&w=0&k=20&c=jcRkI_U4wX93PR6yPe7bqbY5LaHTjYLSGJcXedAP52A=",
     imageAlt:"No way!",
   },
+  
+
 ];
 
 export const gridData = [
@@ -136,10 +146,10 @@ export const gridData = [
 
 export const authorsData = [
   {
-    avatar: 'https://photos.wellfound.com/users/14874397-medium_jpg?1656899754' ,
-    name: 'Melih Kurukavak', 
+    avatar: '' ,
+    name: 'John john', 
     email: 'melih.kurukavak@daktilo.com', 
-    job: 'Full Stack Engineer',
+    job: 'Engineer',
   },
   {
     avatar: 'https://media.istockphoto.com/id/185727214/tr/foto%C4%9Fraf/unhappy-man-looking-at-the-camera.jpg?s=1024x1024&w=is&k=20&c=9dsGLs48QGcBjoaTDTltO2-qbKgYq_50F4zjIrc3jh4=', 
@@ -156,30 +166,6 @@ export const authorsData = [
   {
     avatar: 'https://images.unsplash.com/photo-1583674392771-2abf6be75965?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=934&q=80', 
     name: 'John Doe 3', 
-    email: 'johndoe@daktilo.com', 
-    job: 'Engineer',
-  },
-  {
-    avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80', 
-    name: 'John Doe 4', 
-    email: 'johndoe@daktilo.com', 
-    job: 'Engineer',
-  },
-  {
-    avatar: 'https://images.unsplash.com/photo-1598198414976-ddb788ec80c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=758&q=80', 
-    name: 'John Doe 5', 
-    email: 'johndoe@daktilo.com', 
-    job: 'Engineer',
-  },
-  {
-    avatar: 'https://images.unsplash.com/photo-1603110505034-7e7dd9458f27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80', 
-    name: 'John Doe 6', 
-    email: 'johndoe@daktilo.com', 
-    job: 'Engineer',
-  },
-  {
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80', 
-    name: 'John Doe 7', 
     email: 'johndoe@daktilo.com', 
     job: 'Engineer',
   },
@@ -243,5 +229,20 @@ export const searchData = [
     description: 'Yazarlar Sayfasına Git',
     onTrigger: () => console.log('Documentation'),
     icon: <IconFileText size="1.2rem" />,
+  },
+];
+
+export const headerTabData = [
+  {
+    label: 'Anasayfa',
+    link: '/',
+  },
+  {
+    label: 'Yazarlar',
+    link: '/authors',
+  },
+  {
+    label: 'Demo',
+    link: '/demo',
   },
 ];

@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState }from 'react';
 import { createStyles } from '@mantine/core';
 import { SCROLL_OFFSET } from '@utils/constants';

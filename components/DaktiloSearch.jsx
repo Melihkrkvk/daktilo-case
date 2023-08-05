@@ -1,3 +1,4 @@
+'use client';
 import { Group, Kbd, TextInput, Flex, UnstyledButton, useMantineTheme } from '@mantine/core';
 import { SpotlightProvider, spotlight } from '@mantine/spotlight';
 import { IconSearch } from '@tabler/icons-react';
@@ -39,9 +40,23 @@ function SpotlightButtonControl() {
     const theme = useMantineTheme();
   return (
    
+    <UnstyledButton onClick={spotlight.open}>
     <Group position="center">
-    <IconSearch size={18} onClick={spotlight.open} />
+    <TextInput
+      icon={<IconSearch size="1rem" />}
+      styles={{ 
+      input: {cursor: 'pointer', 
+      width: 0,
+      padding: 0,
+      display: 'flex',
+      justifyContent: 'center',
+      ":focus": { outline: 'none', 
+      border: `${theme.colorScheme === 'dark' ? '0.0625rem solid #373A40' : '0.0625rem solid #ced4da'}`,}} 
+    }}
+      readOnly
+    />
     </Group>
+    </UnstyledButton>
   
   );
 }

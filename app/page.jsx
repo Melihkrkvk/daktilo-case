@@ -7,6 +7,8 @@ import DaktiloGrid from '@components/DaktiloGrid';
 import { cardData } from '@utils/mock';
 
 
+
+
 const Home = () => {
     const theme = useMantineTheme();
     const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
@@ -14,8 +16,10 @@ const Home = () => {
     const responsiveSpan = mobile ? 6 : 3;
 
     return (
+    
         
-        <Container>
+        <Container size={'md'}>
+           
             <Grid mt={10}>
                 {cardData.map((card, index) => (
                     <Grid.Col span={responsiveSpan} key={index}>
@@ -31,7 +35,8 @@ const Home = () => {
             </Grid>
             <DaktiloSlider style={{ marginTop: '15px' }} slidesToScroll={slidesToScroll} slideGap={10}  />
             <DaktiloGrid />
-        </Container> 
+        </Container>
+
     );
 };
 

@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Grid, Container, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';

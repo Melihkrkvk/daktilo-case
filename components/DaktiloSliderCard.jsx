@@ -1,14 +1,18 @@
+'use client';
 import React from 'react'
 import { createStyles, Paper, Text, Title, Button, rem } from '@mantine/core';
 
-const cardTypeLookup = (cardType) => {
-  const obj = {
-    standart: 200,
-    default: 400,
-  };
+const obj = {
+  standart: 200,
+  default: 400,
+};
+ const cardTypeLookup = (cardType) => {
   return obj[cardType] || obj['default'];
 };
-
+/*
+`${rem(cardTypeLookup(cardType))}`
+height: `${height}`,
+ */
 const useStyles = createStyles((theme, {cardType}) => ({
     card: {
       height: `${rem(cardTypeLookup(cardType))}`,
@@ -42,7 +46,7 @@ const useStyles = createStyles((theme, {cardType}) => ({
 
  
 
-  export default function DaktiloCard({image, title, category, buttonTitle, cardType}) {
+  export default function DaktiloSliderCard({image, title, category, buttonTitle, height, cardType}) {
     const { classes } = useStyles({ cardType });
   
     return (

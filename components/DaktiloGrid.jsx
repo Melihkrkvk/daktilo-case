@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react'
 import { createStyles, Paper, Text, Title, Button, rem, SimpleGrid, Skeleton, Container, Stack, useMantineTheme, px, Grid } from '@mantine/core';
 import DaktiloCard from '@components/DaktiloCard';

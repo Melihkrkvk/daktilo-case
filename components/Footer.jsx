@@ -23,6 +23,7 @@ const useStyles = createStyles((theme) => ({
 
   logo: {
     maxWidth: rem(200),
+    color: theme.colorScheme === 'dark' ? theme.white : theme.colors.dark[7],
 
     [theme.fn.smallerThan('sm')]: {
       display: 'flex',
